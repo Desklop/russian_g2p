@@ -13,12 +13,14 @@ import logging
 
 
 class Accentor:
-    def __init__(self, mode='one', debug='no', exception_for_unknown=False, use_wiki=True):
+    def __init__(self, mode='one', debug='no', exception_for_unknown=False, use_wiki=True, verbose=False):
         if debug == 'no':
             logging.basicConfig()
         else:
             logging.basicConfig(level=logging.DEBUG)
         self.logger = logging.getLogger()
+        if not verbose:  # from https://stackoverflow.com/questions/27647077/fully-disable-python-logging/55396144#55396144
+            self.logger.addFilter(lambda record: False)
         self.logger.debug('Setting up the Accentor...')
         self.mode = mode
         self.__all_russian_letters = {'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о',
