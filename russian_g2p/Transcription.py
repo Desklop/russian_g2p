@@ -7,7 +7,7 @@ class Transcription:
     def __init__(self, raise_exceptions: bool=False, batch_size: int=64, verbose: bool=False,
                  use_wiki: bool=False):
         self.__preprocessor = Preprocessor(batch_size=batch_size)
-        self.__accentor = Accentor(exception_for_unknown=raise_exceptions, use_wiki=use_wiki)
+        self.__accentor = Accentor(exception_for_unknown=raise_exceptions, use_wiki=use_wiki, verbose=verbose)
         self.__g2p = Grapheme2Phoneme(exception_for_nonaccented=raise_exceptions)
         self.verbose = verbose
 
